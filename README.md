@@ -21,13 +21,10 @@ All my command-line tools and its configurations. Have fun :)
 
 After installing all apps are moved to /Applications folder
 
- * Atom
  * Firefox
  * Google Chrome
  * Cloud App
  * Caffeine
- * Filezilla
- * Sublime Text
  * Github App
  * Skype
  * Dropbox
@@ -35,7 +32,6 @@ After installing all apps are moved to /Applications folder
  * Virtualbox
  * Vagrant
  * Mysql Workbench
- * Google Drive
  * Evernote
  * Spotify
  * Transmission
@@ -56,14 +52,28 @@ After installing all apps are moved to /Applications folder
 * [Homebrew Cask](http://caskroom.io/) to install apps easily
 * [Golang](http://golang.org) Google's language
 * [Git](http://git-scm.com) for code versioning
+* [CocoaPods](http://cocoapods.org) - Dependency manager for Objective-C and
+  Swift
 
+#### Vim
+My complete vim setup:
 
-#### Javascript
+__Plugins__
 
-* [NodeJs](https://github.com/visionmedia/n) for Node version management
-* [Bower](http://bower.io/) for front-end package management
-* [Gulp](http://gulpjs.com) the streamming bulding system
-* [Meteor](http://meteor.com/) Open source platform for building web and mobile app in pure JavaScript.
+ * ACK
+ * Hack
+ * NERDTree
+ * Dash
+ * vim-go
+ * vim-multiple-cursors
+ * vim-gitgutter
+ * vim-markdown
+ * vim-airline
+ * vim-jade
+ * ctrlp
+ * phpcomplete
+ * vim-json
+
 
 #### .osx Configuration
 
@@ -76,7 +86,3 @@ Thanks to [brandonb927](https://gist.github.com/brandonb927/3195465) for this gr
 ## License
 
 [MIT License](http://vsouza.mit-license.org/) © Vinicius Souza
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vsouza/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
