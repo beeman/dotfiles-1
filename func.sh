@@ -1,4 +1,12 @@
 #!/bin/sh
+
+
+# read yaml file
+#ex: eval $(parse_yaml config.yml "config_")
+ 
+# access yaml content
+#echo $config_development_database
+
 parse_yaml() {
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
@@ -14,3 +22,25 @@ parse_yaml() {
       }
    }'
 }
+
+# Copy files, if exists then overwrite. arg1 = file, arg2 = destination
+copy(){
+    if [ ! -d "$2" ]; then
+        mkdir -p "$2"
+    fi
+    cp -R "$1" "$2"
+}
+
+# Check if software has been installed
+exists(){
+    hash "$1" 2>/dev/null || { return 0 }
+}
+
+# Check if symlink exits
+symlink_exists(){
+    if [ ! \( -e "${file}" \) ]
+    then
+        return 0;
+    fi
+}
+        
