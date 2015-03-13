@@ -45,6 +45,10 @@ alias gpu='git pull'
 alias gpo='git push origin'
 alias gfp='git fetch -p'
 
+# Docker ALIASES
+alias dp='docker pull'
+alias dc='docker create'
+
 # golang
 export GOPATH=$HOME/golang
 export GOROOT=/usr/local/opt/go/libexec
