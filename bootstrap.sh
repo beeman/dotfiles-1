@@ -35,9 +35,6 @@ msg '\n'
 msg '                by @vsouza'
 msg '\n'
 
-msg 'Initializing...'
-msg '\n'
-
 # -- Homebrew ------------------------------------------------------------------
 if hash brew 2> /dev/null; then
 	msg_ok "homebrew"
@@ -71,30 +68,7 @@ else
 	git clone https://github.com/vsouza/dotfiles.git $HOME/.dotfiles
 fi
 
-# Install all apps with homebrew cask
-# -- Apps ------------------------------------------------------------------
-#sh $HOME/.dotfiles/apps.sh
-
-# Configure Git
-msg_run "configure git"
-sh $HOME/.dotfiles/git.sh
-
-# Configure Golang
-msg_run "configure golang"
-sh $HOME/.dotfiles/golang.sh
-
-# Configure Javascript enviroment
-msg_run "configure javascript enviroment"
-sh $HOME/.dotfiles/javascript.sh
-
-# Configure osx directives
-msg_run "configure osx directives"
-sh $HOME/.dotfiles/osx.sh
-
-# Configure Vim
-msg_run "configure vim"
-sh $HOME/.dotfiles/vim.sh
-
-# Install and Configure Python
-msg_run "Install and Configure Python"
-sh $HOME/.dotfiles/python.sh
+# -- Installers ----------------------------------------------------------------
+# Find the installers and run them iteratively
+cd "$HOME/.dotfiles/$(dirname $)"/..
+find . -name setup.sh | while read installer ; do sh -c "${installer}" ; done
