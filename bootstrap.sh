@@ -1,74 +1,87 @@
-#!/bin/sh
-#a
+# homebrew
+ruby -e "$(curl -fsSL
+https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Tells the shell script to exit if it encounters an error
-set -e
+# update homebrew
+brew update
+brew upgrade
 
-# -- Log -----------------------------------------------------------------------
-# Duplicated code from log.sh
-# since we cannot import a file when installing via cURL
-function msg {
-	echo  "\033[0;37m$1\033[0m";
-}
+# utils
+brew install git
+brew install coreutils
+brew install moreutils
+brew install findutils
+brew install gnu-sed --default-names
+brew install wget --enable-iri
+brew install golang
 
-function msg_ok {
-	echo  "➜\033[1;32m $1 ✔\033[0m";
-}
+# macos x utils
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/screen
 
-function msg_run {
-	echo  "➜\033[1;35m $1  $2\033[0m";
-}
+# cask
+brew install caskroom/cask/brew-cask
 
-msg '\n'
+# add formulae to homebrew
+brew tap homebrew/science                       # science
+brew tap caskroom/fonts                         # fonts
+brew tap caskroom/versions
 
-msg_ok '      _       _    __ _ _             _ _ _ '
-msg_ok '     | |     | |  / _(_) |           | | | |'
-msg_ok '   __| | ___ | |_| |_ _| | ___  ___  | | | |'
-msg_ok '  / _` |/ _ \| __|  _| | |/ _ \/ __| | | | |'
-msg_ok ' | (_| | (_) | |_| | | | |  __/\__ \ |_|_|_|'
-msg_ok '  \__,_|\___/ \__|_| |_|_|\___||___/ (_|_|_)'
+# langs
+brew install python                                         # python
 
-msg '\n'
+# remove outdated versions from the cellar
+brew cleanup
 
+# browsers
+brew cask install firefox 2> /dev/null
+brew cask install google-chrome 2> /dev/null
 
+# dev apps
+brew cask install iterm2 2> /dev/null
+brew cask install virtualbox 2> /dev/null
+brew cask install vagrant 2> /dev/null
 
-msg '                by @vsouza'
-msg '\n'
-
-# -- Homebrew ------------------------------------------------------------------
-if hash brew 2> /dev/null; then
-	msg_ok "homebrew"
-else
-	msg_run "homebrew" "ruby -e '$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)'"
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-# -- Git -----------------------------------------------------------------------
-if hash git 2> /dev/null; then
-	msg_ok "git"
-else
-	msg_run "git"
-	brew install git 2> /dev/null
-fi
-
-# -- Golang -----------------------------------------------------------------------
-if hash go 2> /dev/null; then
-	msg_ok "golang"
-else
-	msg_run "golang"
-	brew install go 2> /dev/null
-fi
+# apps
+brew cask install caffeine 2> /dev/null
+brew cask install vlc 2> /dev/null
+brew cask install shiftit 2> /dev/null
+brew cask install dashlane 2> /dev/null
+brew cask install transmission 2> /dev/null
+brew cask install vlc 2> /dev/null
+brew cask install evernote 2> /dev/null
+brew cask install spotify 2> /dev/null
+brew cask install slack 2> /dev/null
+brew cask install telegram 2> /dev/null
+brew cask install transmit 2> /dev/null
+brew cask install robomongo 2> /dev/null
+brew cask install skype 2> /dev/null
+brew cask install goofy 2> /dev/null
+brew cask install mysqlworkbench 2> /dev/null
+brew cask install robomongo 2> /dev/null
+brew cask install dash 2> /dev/null
+brew cask install boot2docker 2> /dev/null
 
 
-# -- Dotfiles ------------------------------------------------------------------
-if [[ -d "$HOME/.dotfiles" ]]; then
-	msg_ok "dotfiles"
-else
-	msg_run "dotfiles" "git clone https://github.com/vsouza/dotfiles.git $HOME/.dotfiles"
-	git clone https://github.com/vsouza/dotfiles.git $HOME/.dotfiles
-fi
+# quick look
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch
+quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
 
-# -- Installers ----------------------------------------------------------------
-# Find the installers and run them iteratively
+# fonts
+brew cask install font-source-code-pro 2> /dev/null
+
+
+# front-end related stuff
+gem install compass
+
+# symlink .files
+ln -s .vimrc ~/.vimrc
+ln -s .zshrc ~/.zshrc
+ln -s .osx ~/.osx
+ln -s .gitconfig ~/.gitconfig
+ln -s .gitignore ~/.gitignore
+
+# Run installers
 cd "$HOME/.dotfiles/$(dirname $)"/..
 find . -name setup.sh | while read installer ; do sh -c "${installer}" ; done
+
